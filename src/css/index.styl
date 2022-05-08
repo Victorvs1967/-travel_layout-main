@@ -13,7 +13,7 @@ body {
 }
 
 body {
-  background $main_dark url('/images/cover.jpg') center top no-repeat
+  background $main_dark url('../images/cover.jpg') center top no-repeat
   background-size 100% auto
   color $main_lite
 }
@@ -76,11 +76,11 @@ a {
   position absolute
   top 2rem
   width 100%
-  z-index 1
+  z-index 99
 
   &__content {
     display grid
-    grid-template-columns auto 1fr auto
+    grid-template-columns auto 1fr
     padding 0 $main_shift
     align-items center
   }
@@ -129,7 +129,7 @@ a {
   &__icon {
     width 1rem
     height 1rem
-    background url('/images/icons/search.svg') center center no-repeat
+    background url('../images/icons/search.svg') center center no-repeat
     background-size content
     cursor pointer
     padding-right 0.5rem
@@ -467,8 +467,8 @@ a {
     color $main_lite
 
     &:hover,
-    &visited,
-    &:active {
+    &:visited,
+    &_active {
       color $main_lite
     }
   }
@@ -497,28 +497,28 @@ a {
 .icon__instagram {
   width 1.3em
   height 1.3em
-  background url('/images/icons/instagram.svg') center center no-repeat
+  background url('../images/icons/instagram.svg') center center no-repeat
   background-size contain
 }
 
 .icon__facebook {
   width 1.3em
   height 1.3em
-  background url('/images/icons/facebook.svg') center center no-repeat
+  background url('../images/icons/facebook.svg') center center no-repeat
   background-size contain
 }
 
 .icon__twitter {
   width 1.3em
   height 1.3em
-  background url('/images/icons/twitter.svg') center center no-repeat
+  background url('../images/icons/twitter.svg') center center no-repeat
   background-size contain
 }
 
 .icon__arrow_downward {
   width 1em
   height 1.4em
-  background url('/images/icons/arrow_downward.svg') center center no-repeat
+  background url('../images/icons/arrow_downward.svg') center center no-repeat
   background-size contain
 }
 
@@ -526,18 +526,32 @@ a {
   width 1.4em
   height 1em
   margin-left 9px
-  background url('/images/icons/arrow_rightward.svg') center center no-repeat
+  background url('../images/icons/arrow_rightward.svg') center center no-repeat
   background-size contain
 }
 
 .icon__right {
   width 1.5em
   height 1.5em
-  background url('/images/icons/arrow_right.svg') center center no-repeat
+  background url('../images/icons/arrow_right.svg') center center no-repeat
   background-size contain
 }
 
-@media(min-width 1790px) {
+.burger-menu {
+  display grid
+  grid-template-columns 1fr
+
+  &__content {
+    display grid
+    grid-template-columns 1fr auto
+  }
+
+  &__control {
+    display none
+  }
+}
+
+@media(max-width 1790px) {
   html,
   body {
     font-size 16px
@@ -558,14 +572,15 @@ a {
   }
 }
 
-@media (max-width 1550px) {
+@media(max-width 1550px) {
   html,
   body {
     font-size 14px
   }
 }
 
-@media (max-width 1380px) {
+@media(max-width 1380px) {
+
   .section-col {
     &__content {
       width 50%
@@ -577,12 +592,108 @@ a {
   }
 }
 
-@media (max-width 1310px) {
+@media(max-width 1310px) {
+
   .main-title {
     font-size .9rem
   }
 
   .subscribe {
     width 35%
+  }
+}
+
+/* Mobile version */
+// @media(max-width 750px) {
+@media(max-width 1300px) {
+
+  .burger-menu {
+    display block
+    position fixed
+    top 0
+    right 0
+    bottom 0
+    width 70vw
+    background #000
+    transform translate3d(70vw, 0, 0)
+    transition: transform .4s
+    z-index 999
+
+    &__content {
+      height 100vh
+      display block
+      padding 1rem 0 1rem
+      display grid
+      box-sizing border-box
+      grid-template-columns 1fr
+      grid-template-rows 1fr auto
+    }
+
+    &__control {
+      display block
+      width 2rem
+      height 2rem
+      position absolute
+      top 2.1rem
+      left calc(-4.7rem - 2rem)
+      background url('../images/icons/menu.svg') center center no-repeat
+      background-size content
+      border none
+      cursor pointer
+      transition opacity .3s
+
+      &:hover {
+        opacity .7
+      }
+    }
+  }
+
+  .burger-menu_opened {
+    transform translate3d(0, 0, 0)
+    transition transform .4s
+
+    .burger-menu__control {
+      background-image url('../images/icons/x.svg')
+      left -3rem
+    }
+  }
+
+  .space-cover {
+    display none
+    position fixed
+    top 0
+    bottom 0
+    left 0
+    right 0
+    background rgba(0, 0, 0, .5)
+
+    &_visible {
+      display block
+      transition background .3s
+    }
+  }
+
+  .main-nav {
+    display block
+    margin-bottom 1rem
+
+    &__list {
+      display block
+    }
+
+    &__link {
+      width 100%
+      padding 1.2rem
+      box-sizing border-box
+      text-align center
+
+      &:hover,
+      &_active {
+        background #fff
+        color #000 !important
+        opacity 1
+        transition all .3s
+      }
+    }
   }
 }

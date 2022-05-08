@@ -6,29 +6,34 @@ html(lang="ru")
     link(rel="preconnect" href="https://fonts.googleapis.com")
     link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
     link(href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet")
-    link(rel="stylesheet" href="/css/reset.css")
-    link(rel="stylesheet" href="/css/index.css")
-    link(rel="stylesheet" href="/js/libs/gallery.css")
-    script(src="/js/libs/gallery.js" defer)
-    script(src="/js/index.js" defer)
+    link(rel="stylesheet" href="css/reset.css")
+    link(rel="stylesheet" href="css/index.css")
+    link(rel="stylesheet" href="js/libs/gallery.css")
+    script(src="js/libs/gallery.js" defer)
+    script(src="js/index.js" defer)
     
   body
-    .page
+    .page#page
       header.header
         .header__content 
-          a.logo(href="/")
+          a.logo(href="#page")
             h1.logo__title QWERy
-          nav.main-nav.header__center
-            ul.main-nav__list
-              li.main-nav__item
-                a.main-nav__link.main-nav__link_active(href="#info") Information
-              li.main-nav__item
-                a.main-nav__link(href="#gallery") About&nbsp;us
-              li.main-nav__item
-                a.main-nav__link(href="#culture") Culture
-          label.search
-            .search__icon
-            input.search__form(type="text" placeholder="Search")
+          .burger-menu
+            .burger-menu__content
+              nav.main-nav.header__center
+                ul.main-nav__list
+                  li.main-nav__item
+                    a.main-nav__link(href="#info") Information
+                  li.main-nav__item
+                    a.main-nav__link(href="#gallery") About&nbsp;us
+                  li.main-nav__item
+                    a.main-nav__link(href="#culture") Culture
+              label.search
+                .search__icon
+                input.search__form(type="text" placeholder="Search")
+            button.burger-menu__control 
+          .space-cover 
+
       .cover-space
             
       section.section.section__main
@@ -54,7 +59,7 @@ html(lang="ru")
 
       .content
         section.section-cols#info
-          img.section-col.section-col__image(src="/images/enjoy.jpg" alt="Mountains")
+          img.section-col.section-col__image(src="images/enjoy.jpg" alt="Mountains")
           .section-col.section-col__content 
             .main-title.main-title_small 
               span.main-title__summary EAST NUSA TENGGARA
@@ -66,7 +71,7 @@ html(lang="ru")
 
         section.section
           #gallery.gallery 
-            each imageUrl in ["/images/gallery.jpg", "/images/gallery.jpg", "/images/gallery.jpg", "/images/gallery.jpg", "/images/gallery.jpg"]
+            each imageUrl in ["images/gallery.jpg", "images/gallery.jpg", "images/gallery.jpg", "images/gallery.jpg", "images/gallery.jpg"]
               .gallery__slide(style={'background-image': `url("${imageUrl}")`})
                 .gallery__content
                   .content_small
@@ -87,7 +92,7 @@ html(lang="ru")
               a.arrow-link(href="#")
                 | read more
                 .arrow-link__icon.icon__arrow_rightward
-          img.section-col.section-col__image(src="/images/culture.jpg" alt="Culture")
+          img.section-col.section-col__image(src="images/culture.jpg" alt="Culture")
 
         section.section.section-border 
           .start 
