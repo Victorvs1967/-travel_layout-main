@@ -1,0 +1,10 @@
+body {
+  padding: 1rem;
+  max-width: 900px;
+  margin: 0 auto
+}
+
+.slide img {
+  width: 100%;
+  pointer-events: none
+}
