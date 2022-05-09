@@ -40,49 +40,35 @@ class Gallery {
     this.setParameters();
     this.setEvents();
   }
+
   manageHTML() {
-    this.containerNode.classList.add(GalleryClassName),
-      (this.containerNode.innerHTML = `
-            <div class="${GalleryLineContainerClassName}">
-                <div class="${GalleryLineClassName}">
-                    ${this.containerNode.innerHTML}
-                </div>
-            </div>
-            <div class="${GalleryNavClassName}">
-                <button class="${GalleryNavLeftClassName}">Left</button>
-                <button class="${GalleryNavRightClassName}">Right</button>
-            </div>
-            <div class="${GalleryDotsClassName}"></div>
-        `);
-      (this.lineContainerNode = this.containerNode.querySelector(
-        `.${GalleryLineContainerClassName}`
-      ));
-      (this.lineNode = this.containerNode.querySelector(
-        `.${GalleryLineClassName}`
-      ));
-      (this.dotsNode = this.containerNode.querySelector(
-        `.${GalleryDotsClassName}`
-      ));
-      (this.slideNodes = Array.from(this.lineNode.children).map((e) =>
-        wrapElementByDiv({ element: e, className: GallerySlideClassName })
-      ));
-      (this.dotsNode.innerHTML = Array.from(Array(this.size).keys())
-        .map(
-          (e) =>
-            `<button class="${GalleryDotClassName} ${
-              e === this.currentSlide ? GalleryDotActiveClassName : ""
-            }"></button>`
-        )
-        .join(""));
-      (this.dotNodes = this.dotsNode.querySelectorAll(
-        `.${GalleryDotClassName}`
-      ));
-      (this.navLeft = this.containerNode.querySelector(
-        `.${GalleryNavLeftClassName}`
-      ));
-      (this.navRight = this.containerNode.querySelector(
-        `.${GalleryNavRightClassName}`
-      ));
+    this.containerNode.classList.add(GalleryClassName);
+    this.containerNode.innerHTML = `
+          <div class="${GalleryLineContainerClassName}">
+              <div class="${GalleryLineClassName}">
+                  ${this.containerNode.innerHTML}
+              </div>
+          </div>
+          <div class="${GalleryNavClassName}">
+              <button class="${GalleryNavLeftClassName}">Left</button>
+              <button class="${GalleryNavRightClassName}">Right</button>
+          </div>
+          <div class="${GalleryDotsClassName}"></div>
+      `;
+    this.lineContainerNode = this.containerNode.querySelector(`.${GalleryLineContainerClassName}`);
+    this.lineNode = this.containerNode.querySelector(`.${GalleryLineClassName}`);
+    this.dotsNode = this.containerNode.querySelector(`.${GalleryDotsClassName}`);
+    this.slideNodes = Array.from(this.lineNode.children).map((e) =>
+      wrapElementByDiv({ element: e, className: GallerySlideClassName }));
+    this.dotsNode.innerHTML = Array.from(Array(this.size).keys())
+      .map(
+        (e) =>
+          `<button class="${GalleryDotClassName} ${
+            e === this.currentSlide ? GalleryDotActiveClassName : ""
+          }"></button>`).join("");
+    this.dotNodes = this.dotsNode.querySelectorAll(`.${GalleryDotClassName}`);
+    this.navLeft = this.containerNode.querySelector(`.${GalleryNavLeftClassName}`);
+    this.navRight = this.containerNode.querySelector(`.${GalleryNavRightClassName}`);
   }
 
   setParameters() {

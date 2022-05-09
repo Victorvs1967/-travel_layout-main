@@ -49,6 +49,10 @@ a {
 }
 
 /* Main styles */
+.page {
+  // overflow hidden
+}
+
 .content {
   padding 0 $main_shift $main_shift
   max-width 1460px
@@ -73,10 +77,12 @@ a {
 }
 
 .header {
-  position absolute
-  top 2rem
+  position sticky
+  top 0
+  margin-top 2rem
   width 100%
-  z-index 99
+  z-index 999
+  transition background .3s
 
   &__content {
     display grid
@@ -89,11 +95,16 @@ a {
     display flex
     justify-content center
   }
+
+  &_scrolled {
+    background rgba(0, 0, 0, .3);
+  }
 }
 
 .logo {
   color $main_lite
   letter-spacing 1%
+  transition transform .4s
 
   &:visited {
     color $main_lite
@@ -173,7 +184,6 @@ a {
 }
 
 .main-title {
-  font-size 1rem
   margin-bottom 6.2em
 
   &__summary {
@@ -184,6 +194,7 @@ a {
     display flex
     align-items center
     margin-bottom 1.5em
+    font-size 1.2em
 
     &::before {
       content ''
@@ -261,9 +272,7 @@ a {
 .social-networks {
   position absolute
   left 0
-  display flex
-  flex-direction column
-  align-items center
+  top 14em
 
   &__title {
     writing-mode vertical-rl
@@ -272,16 +281,18 @@ a {
 
   &__item {
     margin-bottom 1rem
+  }
+
+  &__link {
+    display inline-block
+    opacity 1
+    transition opacity .3s
 
     &:hover {
       opacity .7
     }
   }
 
-  &__link {
-    opacity 1
-    transition opacity .3s
-  }
 }
 
 .social-horisontal {
@@ -477,9 +488,9 @@ a {
 /* Gallery */
 .gallery {
   &__slide {
-    position relative
     width 100%
     padding-bottom 67%
+    pointer-events none
     background-size cover
   }
   
@@ -592,7 +603,7 @@ a {
   }
 }
 
-@media(max-width 1310px) {
+@media(max-width 1280px) {
 
   .main-title {
     font-size .9rem
@@ -604,9 +615,182 @@ a {
 }
 
 /* Mobile version */
-// @media(max-width 750px) {
-@media(max-width 1300px) {
+@media(max-width 750px) {
 
+  .header {
+    &__content {
+      padding 1rem 1.5rem
+    }
+  }
+
+  .section {
+    margin-bottom 1.5rem
+    padding-top 4rem
+
+    &__main {
+      margin-bottom 4rem
+      padding 0 1.5rem
+    }
+  }
+
+  .section-cols {
+    flex-direction column
+  }
+
+  .section-col {
+    &__image,
+    &__content {
+      width 100%
+    }
+
+    &__image {
+      margin-bottom 3rem
+      order 1
+    }
+
+    &__content {
+      order 2
+    }
+  }
+
+  .content {
+    padding 0 1.5rem 1.5rem
+  }
+
+  .start {
+    display block
+    margin 0
+    text-align center
+
+    &__content {
+      display block
+    }
+
+    &__title,
+    &__desc {
+      margin 0
+    }
+
+    .button {
+      margin-top 1rem
+      width 100%
+    }
+  }
+
+  .footer {
+    &__content {
+      display block
+      margin-bottom 3rem
+
+      .subscribe {
+        width 100%
+        margin-bottom 3rem
+      }
+
+      .menu {
+        text-align center
+
+        &__title {
+          margin-top 1rem
+        }
+      }
+    }
+
+    &__bottom {
+      display block
+      padding 0
+      text-align center
+    }
+
+    &__terms {
+      margin-bottom 2rem
+    }
+
+    &__link {
+      margin 0 1rem
+    }
+
+    .social-horisontal {
+      justify-content center
+
+      &__item {
+        margin-left 0
+        margin 0 1rem
+      }
+    }
+  }
+
+  .gallery {
+
+    &__slide {
+      padding-bottom 180%
+    }
+
+    &__content {
+      width 100%
+      top 0
+      display flex
+      align-items center
+      background rgba(0, 0, 0, .3)
+    }
+
+    .content_small {
+      max-width 80%
+      margin-left 0
+      padding 1.5rem
+    }
+
+  }
+
+  .main-title {
+    text-align center
+    margin-bottom 2em
+
+    &__text {
+      font-size 3em
+    }
+
+    &__summary {
+      display block
+      margin-bottom 1em
+
+      &::before {
+        display none
+      }
+    }
+
+    .main-title__summary::after {
+      display none
+    }
+
+    &_small {
+      font-size .8em
+    }
+  }
+
+  .section__main {
+    position static
+  }
+
+  .social-networks {
+    position static
+    display flex
+    align-items center
+
+    &__list {
+      display flex
+    }
+
+    &__item {
+      margin-left 1rem
+    }
+
+    &__title {
+      writing-mode initial
+    }
+  }
+
+  /* Burger Menu */ 
   .burger-menu {
     display block
     position fixed
@@ -634,8 +818,8 @@ a {
       width 2rem
       height 2rem
       position absolute
-      top 2.1rem
-      left calc(-4.7rem - 2rem)
+      top 3rem
+      left calc(-1.5rem - 1.5rem)
       background url('../images/icons/menu.svg') center center no-repeat
       background-size content
       border none
@@ -644,6 +828,10 @@ a {
 
       &:hover {
         opacity .7
+      }
+
+      &_scrolled {
+        top 1rem
       }
     }
   }
@@ -696,4 +884,6 @@ a {
       }
     }
   }
+
+
 }
