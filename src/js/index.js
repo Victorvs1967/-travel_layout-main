@@ -70,21 +70,26 @@ window.addEventListener('scroll', () => {
 let currentScroll = window.scrollY;
 let scrollAnimationId;
 
-const startAnimationScroll = (newScrollY) => {
+const stopAnimationScroll = () => {
+  window.cancelAnimationFrame(scrollAnimationId);
+  scrollAnimationId = undefined;
+};
+
+const startAnimationScroll = newScrollY => {
   const deltaScroll = newScrollY - currentScroll;
-  currentScroll += deltaScroll * 0.15;
+  currentScroll += deltaScroll * 0.5;
   window.scrollTo(0, currentScroll);
 
   if (Math.abs(deltaScroll) > 1) {
     scrollAnimationId = window.requestAnimationFrame(() => startAnimationScroll(newScrollY));
-  } // ---------- ?????
+  } else {
+    window.scrollTo(0, newScrollY);
+    stopAnimationScroll();
+  }
 };
 
-scroll_action.addEventListener('click', (event) => {
-  event.preventDefault();
-  
+scroll_action.addEventListener('click', () => {  
   stopAnimationScroll();
-
   currentScroll = window.scrollY;
-  startAnimationScroll(scroll_to.offsetTop);
+  startAnimationScroll(scroll_to.offsetTop - 80);
 });

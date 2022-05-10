@@ -2,6 +2,7 @@ doctype html
 html(lang="ru") 
   head
     meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
     title Home page — QWERy
     link(rel="preconnect" href="https://fonts.googleapis.com")
     link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
@@ -58,7 +59,7 @@ html(lang="ru")
           .scroll-down__icon.icon__arrow_downward 
 
       .content#scroll-to
-        section.section-cols#info
+        section#info.section-cols
           img.section-col.section-col__image(src="images/enjoy.jpg" alt="Mountains")
           .section-col.section-col__content 
             .main-title.main-title_small 
@@ -83,8 +84,8 @@ html(lang="ru")
                         | read more
                         .arrow-link__icon.icon__arrow_rightward
 
-        section.section.section-cols
-          .section-col.section-col__content#culture
+        section#culture.section.section-cols
+          .section-col.section-col__content
             .main-title.main-title_small
               span.main-title__summary INDONESIAN CULTURE
               h2.main-title__text Our culture&nbsp;here is&nbsp;very&nbsp;friendly to&nbsp;people
